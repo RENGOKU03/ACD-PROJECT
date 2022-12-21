@@ -1,2 +1,5 @@
 # ACD-PROJECT
-Acd Shopping site project
+
+This is Project
+
+npx tailwindcss -i ./style.css -o ./output.css --watch

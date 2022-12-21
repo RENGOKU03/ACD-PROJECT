@@ -1,0 +1,15 @@
+npm init -y
+
+npm install -D tailwindcss postcss autoprefixer vite
+
+npx tailwindcss init -p
+
+* for all files 
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+{ }
+
+
+/* 
+addToCartEl.setAttribute('style','color:black; font-weight: bold; background-color:#baff39'); */
