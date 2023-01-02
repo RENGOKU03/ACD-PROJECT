@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="output.css">
+    <!-- <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="output.css"> -->
 </head>
 
 <body class=" text-gray-900 bg-gradient-to-r from-purple-500 to-pink-500 text-3xl w-auto h-auto m-auto font-serif">
@@ -88,10 +88,7 @@
         const app = initializeApp(firebaseConfig);
         const analytics = getAnalytics(app);
 
-        import {
-            getFirestore, doc, getDoc, setDoc, collection, addDoc, updateDoc, deleteDoc, deleteField
-        }
-            from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js";
+        import * from "https://www.gstatic.com/firebasejs/9.15.0/firebase-firestore.js" ;
 
         const db = getFirestore();
 
