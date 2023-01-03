@@ -47,23 +47,23 @@ function generateItems(items) {
             <div class="product-image w-48 h-52  bg-white rounded-lg p-4">
                 <img class="w-full h-full object-contain " src="${item.image}">
             </div>
-            <div class="product-name text-gray-700 font-bold mt-2 text-sm">
+            <div class="product-name text-gray-700 flex justify-center font-bold mt-2 text-sm">
                 ${item.name}
             </div>
-            <div class="product-make text-green-700 font-bold">
+            <div class="product-make justify-center flex text-green-700 font-bold">
                 ${item.make}
             </div>
-            <div class="product-rating text-yellow-300 font-bold my-1">
+            <div class="product-rating text-yellow-300 flex justify-center font-bold my-1">
             ⭐⭐⭐⭐⭐ ${item.rating}
             </div>
-            <div class="product-price font-bold text-gray-700 text-lg">
+            <div class="product-price font-bold flex justify-center text-gray-700 text-lg">
                 ${numeral(item.price).format('0,0.00')}
                 
             </div>
         `
 
         let addToCartEl = document.createElement("div");
-        addToCartEl.classList.add("cartto_js", "cursor-pointer", "m-2","product-add", "h-8", "w-28", "rounded", "text-white", "text-md", "flex", "justify-center", "items-center");
+        addToCartEl.classList.add("cartto_js", "cursor-pointer", "m-2","product-add", "h-8", "w-48", "rounded", "text-white" , "justify-center", "text-md", "flex", "justify-center", "items-center");
         addToCartEl.innerText = "Add to cart";
         addToCartEl.addEventListener("click", function(){
             addToCart(item)
