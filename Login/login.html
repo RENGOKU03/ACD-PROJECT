@@ -1,93 +1,45 @@
+<!DOCTYPE html>
 <html>
+
 <head>
-	<title>Login for ACD</title>
-	<link rel="stylesheet" href="loginstyle.css">
-	
+	<title>Signin / Signup for ACD Shopping</title>
+	<link rel="icon" href="https://aircraftcomponentdesign.com/wp-content/uploads/2020/11/acd_logo_new.png">
+	<link rel="stylesheet" type="text/css" href="loginstyle.css">
+	<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
 </head>
+
 <body>
-	<h1>Signin / Signup for ACD Shopping</h1>
-	<div class="container" id="container">
-		
-		<!------- Registration Starts ------->
+	<h1>Signup for ACD Shopping Mart</h1>
+	<div class="main">
+		<input type="checkbox" id="chk" aria-hidden="true">
 
-		<div class="form-container sign-up-container">
+		<div class="signup">
 			
-				<h1>Create Account</h1>
-				<div class="social-container">
-					<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-					<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-					<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-				</div>
-				<span>or use your email for registration</span>
-				<input type="text" placeholder="Username" required id="username" />
-				<input type="email" placeholder="Email" required id="email" />
-				<input type="password" placeholder="Password" required id="password" />
-				<button id="register">Sign Up</button>
+				<label for="chk" aria-hidden="true">Sign up</label>
+				<input type="text" id="username" name="txt" placeholder="Enter Username" required>
+				<input type="email" name="email" id="email" placeholder="Email" required>
+				<input type="password" name="pswd" id="password" placeholder="Password" required>
+				<button id="register">Sign up</button>
 			
 		</div>
 
 
 
-		<!------- Login Starts ------->
-
-		<div class="form-container sign-in-container">
+		<div class="login">
 			
-				<h1>Sign in</h1>
-				<div class="social-container">
-					<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-					<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-					<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-				</div>
-				<span>or use your account</span>
-				<input type="email" placeholder="Email" required id="email" />
-				<input type="password" placeholder="Password" required id="password" />
-
-				<button id="signinbtn">Sign In</button>
+				<label for="chk" aria-hidden="true">Login</label>
+				<input type="email" id="email" name="email" placeholder="Email" required>
+				<input type="password" id="password" name="pswd" placeholder="Password" required>
+				<button id="login">Login</button>
 			
-		</div>
-		<div class="overlay-container">
-
-
-
-			<!------- Overlay Starts ------->
-
-			<div class="overlay">
-				<div class="overlay-panel overlay-left">
-					<h1>Welcome Back!</h1>
-					<p>To keep connected with us please login with your personal info</p>
-					<button class="ghost" id="signIn">Sign In</button>
-				</div>
-				<div class="overlay-panel overlay-right">
-					<h1>Hello, Friend!</h1>
-					<p>Enter your personal details and start journey with us</p>
-					<button class="ghost" id="signUp">Sign Up</button>
-				</div>
-			</div>
 		</div>
 	</div>
-
-	<footer>
-		<p>
-			For any query, contact us <a>acdshopping.support@gmail.com</a>.
-
-		</p>
-	</footer>
 </body>
+
+
+
+
 <script type="module">
-	const signUpButton = document.getElementById('signUp');
-	const signInButton = document.getElementById('signIn');
-	const container = document.getElementById('container');
-
-	signUpButton.addEventListener('click', () => {
-		container.classList.add("right-panel-active");
-		//alert("Redirected to Signin")
-	});
-
-	signInButton.addEventListener('click', () => {
-		container.classList.remove("right-panel-active");
-	});
-
-
 	// Import the functions you need from the SDKs you need
 	import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 	import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
@@ -139,8 +91,12 @@
 	});
 	//----- End
 
+
+
+
 	//----- Login code start	  
-	document.getElementById("signinbtn").addEventListener("click", function () {
+
+	login.addEventListener("click", function(){
 		var email = document.getElementById("email").value;
 		var password = document.getElementById("password").value;
 
@@ -150,8 +106,8 @@
 				const user = userCredential.user;
 				console.log(user);
 				alert(user.email + " Login successfully!!!");
-				document.getElementById('logout').style.display = 'block';
-				//Redirect();
+				document.getElementById('logout');
+				Redirect();
 				// ...
 			})
 			.catch((error) => {
@@ -160,21 +116,17 @@
 				console.log(errorMessage);
 				alert(errorMessage);
 			});
-	});
-	//----- End
 
-	//----- Logout code start	  
-	document.getElementById("logout").addEventListener("click", function () {
-		signOut(auth).then(() => {
-			// Sign-out successful.
-			console.log('Sign-out successful.');
-			alert('Sign-out successful.');
-			document.getElementById('logout').style.display = 'none';
-		}).catch((error) => {
-			// An error happened.
-			console.log('An error happened.');
-		});
-	});
+	})
+
+//----- End
+
+
+
+	
+
+
+
 	//----- End
 	function Redirect() {
 		window.location = "/index.html";
