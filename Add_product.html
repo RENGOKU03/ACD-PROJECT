@@ -52,14 +52,14 @@
         </div>
 
 
-        <div class="flex justify-center mt-6 pt-6 mb-2 p-2 space-x-3  ">
+        <div class="flex justify-center mt-6 pt-6 mb-2 p-2 space-x-3 ] ">
             <label class="text-black mt-2 font-semibold ">Categories </label>
-            <select id="Categorybox" class=" h-12 bg-white border w-9 " required>
-                <option class="" value="Mobile">Mobile</option>
-                <option value="Books">Books</option>
-                <option value="Electronics">Electronics</option>
-                <option value="Home">Home</option>
-                <option value="Fashion">Fashion</option>
+            <select id="Categorybox" class=" w-full  " required>
+                <option value="mobile">Mobile</option>
+                <option value="books">book</option>
+                <option value="electronics">electronics</option>
+                <option value="home">home</option>
+                <option value="fashion">fashion</option>
             </select>
         </div>
     </div>
@@ -124,13 +124,13 @@
 
         async function AddDocument_CustomID() {
 
-            const docRef = await addDoc(collection(db, "users"), {
-                Name: NameBox.value,
-                Make: MakeBox.value,
-                Image: ImageBox.value,
-                Price: PriceBox.value,
-                Rating: RatingBox.value,
-                Category: CategoryBox.value
+            const docRef = await addDoc(collection(db, "items"), {
+                name: NameBox.value,
+                make: MakeBox.value,
+                image: ImageBox.value,
+                price: PriceBox.value,
+                rating: RatingBox.value,
+                category: CategoryBox.value
             })
 
                 .then(() => {
@@ -141,62 +141,62 @@
                 });
         }
 
-        let items=[];
-        // Select Event
-        async function GetADocument() {
-            const querySnapshot = await getDocs(collection(db, "items"));
+    //     let items=[];
+    //     // Select Event
+    //     async function GetADocument() {
+    //         const querySnapshot = await getDocs(collection(db, "items"));
 
-            querySnapshot.forEach((doc) => {
-                items.push({
-                    id: doc.id,
-                    image: doc.data().image,
-                    name: doc.data().name,
-                    make: doc.data().make,
-                    rating: doc.data().rating,
-                    price: doc.data().price
+    //         querySnapshot.forEach((doc) => {
+    //             items.push({
+    //                 id: doc.id,
+    //                 image: doc.data().image,
+    //                 name: doc.data().name,
+    //                 make: doc.data().make,
+    //                 rating: doc.data().rating,
+    //                 price: doc.data().price
 
-                });
-            });
-            ShowDocument(items);
-        }
-     console.log(items);
+    //             });
+    //         });
+    //         ShowDocument(items);
+    //     }
+    //  console.log(items);
    
-        // Update Data
-        function ShowDocument(items) {
-            let itemsHTML = "";
+    //     // Update Data
+    //     function ShowDocument(items) {
+    //         let itemsHTML = "";
            
-            items.forEach((items) => {
-                let doc = document.createElement("div");
-                doc.classList.add("main-product", "mr-5", "mb-5");
-                doc.innerHTML = `
-            <div class="product-image w-48 h-52  bg-white rounded-lg p-4">
-                <img class="w-full h-full object-contain " src="${items.image}">
-            </div>
-            <div class="product-name text-gray-700 flex justify-center font-bold mt-2 text-sm">
-                ${items.name}
-            </div>
-            <div class="product-make justify-center flex text-green-700 font-bold">
-                ${items.make}
-            </div>
-            <div class="product-rating text-yellow-300 flex justify-center font-bold my-1">
-            ⭐⭐⭐⭐⭐ ${items.rating}
-            </div>
-            <div class="product-price font-bold flex justify-center text-gray-700 text-lg">
-                ${items.price}
-                
-            </div>
-        `
-            })}
+    //         items.forEach((items) => {
+    //             let doc = document.createElement("div");
+    //             doc.classList.add("main-product", "mr-5", "mb-5");
+    //             doc.innerHTML = `
+    //         <div class="product-image w-48 h-52  bg-white rounded-lg p-4">
+    //             <img class="w-full h-full object-contain " src="${items.image}">
+    //         </div>
+    //         <div class="product-name text-gray-700 flex justify-center font-bold mt-2 text-sm">
+    //             ${items.name}
+    //         </div>
+    //         <div class="product-make justify-center flex text-green-700 font-bold">
+    //             ${items.make}
+    //         </div>
+    //         <div class="product-rating text-yellow-300 flex justify-center font-bold my-1">
+    //         ⭐⭐⭐⭐⭐ ${items.rating}
+    //         </div>
+    //         <div class="product-price font-bold flex justify-center text-gray-700 text-lg">
+    //             ${items.price}
+        
+    //         </div>
+    //     `
+    //         })}
            
         
 
 
 
-        // Assign Buttons to Events
+    //     // Assign Buttons to Events
 
         insBtn.addEventListener("click", AddDocument_CustomID);
-        selBtn.addEventListener("click", GetADocument);
-        updBtn.addEventListener("click", ShowDocument);
+        // selBtn.addEventListener("click", GetADocument);
+        // updBtn.addEventListener("click", ShowDocument);
         // delBtn.addEventListener("click", DeleteDocument);
     </script>
 </body>

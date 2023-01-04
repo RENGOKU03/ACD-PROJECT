@@ -2,10 +2,9 @@
 <html>
 
 <head>
-	<title>Signin / Signup for ACD Shopping</title>
-	<link rel="icon" href="https://aircraftcomponentdesign.com/wp-content/uploads/2020/11/acd_logo_new.png">
-	<link rel="stylesheet" type="text/css" href="loginstyle.css">
-	<link href="https://fonts.googleapis.com/css2?family=Jost:wght@500&display=swap" rel="stylesheet">
+	<title>Login for ACD</title>
+	<link rel="stylesheet" href="loginstyle.css">
+	
 </head>
 
 <body>
@@ -15,11 +14,17 @@
 
 		<div class="signup">
 			
-				<label for="chk" aria-hidden="true">Sign up</label>
-				<input type="text" id="username" name="txt" placeholder="Enter Username" required>
-				<input type="email" name="email" id="email" placeholder="Email" required>
-				<input type="password" name="pswd" id="password" placeholder="Password" required>
-				<button id="register">Sign up</button>
+				<h1>Create Account</h1>
+				<div class="social-container">
+					<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+					<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+					<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+				</div>
+				<span>or use your email for registration</span>
+				<input type="text" placeholder="Username" required id="username" />
+				<input type="email" placeholder="Email" required id="email" />
+				<input type="password" placeholder="Password" required id="password" />
+				<button id="register">Sign Up</button>
 			
 		</div>
 
@@ -106,8 +111,8 @@
 				const user = userCredential.user;
 				console.log(user);
 				alert(user.email + " Login successfully!!!");
-				document.getElementById('logout');
-				Redirect();
+				document.getElementById('logout').style.display = 'block';
+				//Redirect();
 				// ...
 			})
 			.catch((error) => {
