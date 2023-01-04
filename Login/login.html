@@ -1,0 +1,177 @@
+<html>
+
+<head>
+	<title>Login for ACD</title>
+	<link rel="stylesheet" href="loginstyle.css">
+</head>
+
+<body>
+	<h1>Signin / Signup for ACD Shopping</h1>
+	<div class="container" id="container">
+
+		<!------- Registration Starts ------->
+
+		<div class="form-container sign-up-container">
+			<form>
+				<h1>Create Account</h1>
+				<div class="social-container">
+					<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+					<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+					<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+				</div>
+				<span>or use your email for registration</span>
+				<input type="text" placeholder="Username" required id="username" />
+				<input type="email" placeholder="Email" required id="email" />
+				<input type="password" placeholder="Password" required id="password" />
+				<button id="authbtn">Sign Up</button>
+			</form>
+		</div>
+
+
+
+		<!------- Login Starts ------->
+
+		<div class="form-container sign-in-container">
+			<form>
+				<h1>Sign in</h1>
+				<div class="social-container">
+					<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+					<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+					<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+				</div>
+				<span>or use your account</span>
+				<input type="email" placeholder="Email" required id="email" />
+				<input type="password" placeholder="Password" required id="password" />
+
+				<button id="login">Sign In</button>
+			</form>
+		</div>
+		<div class="overlay-container">
+
+
+
+			<!------- Overlay Starts ------->
+
+			<div class="overlay">
+				<div class="overlay-panel overlay-left">
+					<h1>Welcome Back!</h1>
+					<p>To keep connected with us please login with your personal info</p>
+					<button class="ghost" id="signIn">Sign In</button>
+				</div>
+				<div class="overlay-panel overlay-right">
+					<h1>Hello, Friend!</h1>
+					<p>Enter your personal details and start journey with us</p>
+					<button class="ghost" id="signUp">Sign Up</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<footer>
+		<p>
+			For any query, contact us <a>acdshopping.support@gmail.com</a>.
+
+		</p>
+	</footer>
+</body>
+<script type="module">
+	const signUpButton = document.getElementById('signUp');
+	const signInButton = document.getElementById('signIn');
+	const container = document.getElementById('container');
+
+	signUpButton.addEventListener('click', () => {
+		container.classList.add("right-panel-active");
+		//alert("Redirected to Signin")
+	});
+
+	signInButton.addEventListener('click', () => {
+		container.classList.remove("right-panel-active");
+	});
+
+
+	// Import the functions you need from the SDKs you need
+	import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
+	import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
+	import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+	// TODO: Add SDKs for Firebase products that you want to use
+	// https://firebase.google.com/docs/web/setup#available-libraries
+
+	// Your web app's Firebase configuration
+	// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+
+	const firebaseConfig = {
+		apiKey: "AIzaSyCSOsAdb5KlBTWg8OaI-kb3Np_apubBzBs",
+        authDomain: "clone-7e368.firebaseapp.com",
+        databaseURL: "https://clone-7e368-default-rtdb.firebaseio.com",
+        projectId: "clone-7e368",
+        storageBucket: "clone-7e368.appspot.com",
+        messagingSenderId: "156834042204",
+        appId: "1:156834042204:web:c8a9d2fdc2f90cf488b199",
+        measurementId: "G-6TVDW34K96"
+	};
+
+	// Initialize Firebase
+	const app = initializeApp(firebaseConfig);
+	const analytics = getAnalytics(app);
+	const auth = getAuth();
+	console.log(app);
+
+
+	document.getElementById("authbtn").addEventListener("click", function () {
+		var email = document.getElementById("email").value;
+		var password = document.getElementById("password").value;
+		//For new registration
+		createUserWithEmailAndPassword(auth, email, password)
+			.then((userCredential) => {
+				// Signed in 
+				const user = userCredential.user;
+				console.log(user);
+				alert("Registration successfully!!");
+				// ...
+			})
+			.catch((error) => {
+				const errorCode = error.code;
+				const errorMessage = error.message;
+				// ..
+				console.log(errorMessage);
+				alert(error);
+			});
+	});
+	//----- End
+
+
+	
+	//----- Login code start	  
+	document.getElementById("login").addEventListener("click", function() {
+		  var email =  document.getElementById("email").value;
+		  var password = document.getElementById("password").value;
+
+		  signInWithEmailAndPassword(auth, email, password)
+		  .then((userCredential) => {
+		    // Signed in 
+		    const user = userCredential.user;
+		    console.log(user);
+		    alert(user.email+" Login successfully!!!");
+		    document.getElementById('logout').style.display = 'block';
+            Redirect();
+		    // ...
+		  })
+		  .catch((error) => {
+		    const errorCode = error.code;
+		    const errorMessage = error.message;
+		    console.log(errorMessage);
+		    alert(errorMessage);
+		  });		  		  
+	  });
+	  //----- End
+
+
+
+	function Redirect() {
+		window.location = "/index.html";
+	}
+
+</script>
+
+</html>
