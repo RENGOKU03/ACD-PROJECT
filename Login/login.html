@@ -4,39 +4,32 @@
 <head>
 	<title>Login for ACD</title>
 	<link rel="stylesheet" href="loginstyle.css">
-	
+
 </head>
 
 <body>
-	<h1>Signup for ACD Shopping Mart</h1>
+	
 	<div class="main">
 		<input type="checkbox" id="chk" aria-hidden="true">
 
 		<div class="signup">
-			
-				<h1>Create Account</h1>
-				<div class="social-container">
-					<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
-					<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
-					<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
-				</div>
-				<span>or use your email for registration</span>
-				<input type="text" placeholder="Username" required id="username" />
-				<input type="email" placeholder="Email" required id="email" />
-				<input type="password" placeholder="Password" required id="password" />
-				<button id="register">Sign Up</button>
-			
+			<label for="chk" aria-hidden="true">Sign up</label>
+			<input type="text" placeholder="Username" required id="username" />
+			<input type="email" placeholder="Email" required id="email" />
+			<input type="password" placeholder="Password" required id="password" />
+			<button id="register">Sign Up</button>
+
 		</div>
 
 
 
 		<div class="login">
-			
-				<label for="chk" aria-hidden="true">Login</label>
-				<input type="email" id="email" name="email" placeholder="Email" required>
-				<input type="password" id="password" name="pswd" placeholder="Password" required>
-				<button id="login">Login</button>
-			
+
+			<label for="chk" aria-hidden="true">Login</label>
+			<input type="email" id="email" name="email" placeholder="Email" required>
+			<input type="password" id="password" name="pswd" placeholder="Password" required>
+			<button id="login">Login</button>
+
 		</div>
 	</div>
 </body>
@@ -101,7 +94,7 @@
 
 	//----- Login code start	  
 
-	login.addEventListener("click", function(){
+	login.addEventListener("click", function () {
 		var email = document.getElementById("email").value;
 		var password = document.getElementById("password").value;
 
@@ -111,8 +104,8 @@
 				const user = userCredential.user;
 				console.log(user);
 				alert(user.email + " Login successfully!!!");
-				document.getElementById('logout').style.display = 'block';
-				//Redirect();
+				document.getElementById('logout');
+				Redirect();
 				// ...
 			})
 			.catch((error) => {
@@ -124,15 +117,10 @@
 
 	})
 
-//----- End
-
+	//----- End
 
 
 	
-
-
-
-	//----- End
 	function Redirect() {
 		window.location = "/index.html";
 	}
