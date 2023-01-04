@@ -2,6 +2,8 @@
 <head>
 	<title>Login for ACD</title>
 	<link rel="stylesheet" href="loginstyle.css">
+	<link rel="stylesheet" href="/style.css">
+	<link rel="stylesheet" href="/output.css">
 	
 </head>
 <body>
@@ -18,7 +20,7 @@
 					<a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
 					<a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
 				</div>
-				<span>or use your email for registration</span>
+				<span>Or USE EMAIL FOR REGISTRATION</span>
 				<input type="text" placeholder="Username" required id="username" />
 				<input type="email" placeholder="Email" required id="email" />
 				<input type="password" placeholder="Password" required id="password" />
@@ -150,9 +152,9 @@
 				const user = userCredential.user;
 				console.log(user);
 				alert(user.email + " Login successfully!!!");
-				document.getElementById('logout').style.display = 'block';
-				//Redirect();
-				// ...
+				
+				
+				
 			})
 			.catch((error) => {
 				const errorCode = error.code;
