@@ -43,8 +43,9 @@
 <script type="module">
 	// Import the functions you need from the SDKs you need
 	import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
-	import { GoogleAuthProvider, signInWithRedirect, getRedirectResult, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
+	//import { GoogleAuthProvider, signInWithRedirect, getRedirectResult, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
 	import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-analytics.js";
+	import { GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
 	import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-auth.js";
 	// TODO: Add SDKs for Firebase products that you want to use
 	// https://firebase.google.com/docs/web/setup#available-libraries
@@ -132,7 +133,7 @@
 
 
 
-	googleauth.addEventListener("click", function() {
+	googleauth.addEventListener("click", function () {
 
 
 		signInWithPopup(auth, provider)
@@ -142,7 +143,8 @@
 				const token = credential.accessToken;
 				// The signed-in user info.
 				const user = result.user;
-				alert(user.DisplayName);
+				alert("User login")
+				Redirect();
 				// ...
 			}).catch((error) => {
 				// Handle Errors here.
@@ -152,9 +154,10 @@
 				const email = error.customData.email;
 				// The AuthCredential type that was used.
 				const credential = GoogleAuthProvider.credentialFromError(error);
+				alert()
 				// ...
-				alert(errorMessage);
 			});
+
 
 	})
 </script>
