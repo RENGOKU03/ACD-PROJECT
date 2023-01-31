@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+
 .main-section-banner {
     background-image: url("images/banner.jpg");
 
